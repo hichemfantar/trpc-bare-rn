@@ -1,15 +1,15 @@
-import React from "react";
-import { Button, Text, TextInput, TouchableOpacity, View } from "react-native";
-import { SafeAreaView } from "react-native-safe-area-context";
-import { Stack, useRouter } from "expo-router";
-import { FlashList } from "@shopify/flash-list";
+import React from 'react';
+import {Button, Text, TextInput, TouchableOpacity, View} from 'react-native';
+import {SafeAreaView} from 'react-native-safe-area-context';
+import {Stack, useRouter} from 'expo-router';
+import {FlashList} from '@shopify/flash-list';
 
-import { api, type RouterOutputs } from "~/utils/api";
+import {api, type RouterOutputs} from '../utils/api';
 
 const PostCard: React.FC<{
-  post: RouterOutputs["post"]["all"][number];
+  post: RouterOutputs['post']['all'][number];
   onDelete: () => void;
-}> = ({ post, onDelete }) => {
+}> = ({post, onDelete}) => {
   const router = useRouter();
 
   return (
@@ -32,13 +32,13 @@ const PostCard: React.FC<{
 const CreatePost: React.FC = () => {
   const utils = api.useContext();
 
-  const [title, setTitle] = React.useState("");
-  const [content, setContent] = React.useState("");
+  const [title, setTitle] = React.useState('');
+  const [content, setContent] = React.useState('');
 
-  const { mutate, error } = api.post.create.useMutation({
+  const {mutate, error} = api.post.create.useMutation({
     async onSuccess() {
-      setTitle("");
-      setContent("");
+      setTitle('');
+      setContent('');
       await utils.post.all.invalidate();
     },
   });
@@ -76,8 +76,7 @@ const CreatePost: React.FC = () => {
             title,
             content,
           });
-        }}
-      >
+        }}>
         <Text className="font-semibold text-white">Publish post</Text>
       </TouchableOpacity>
     </View>
@@ -96,7 +95,7 @@ const Index = () => {
   return (
     <SafeAreaView className="bg-[#1F104A]">
       {/* Changes page title visible on the header */}
-      <Stack.Screen options={{ title: "Home Page" }} />
+      <Stack.Screen options={{title: 'Home Page'}} />
       <View className="h-full w-full p-4">
         <Text className="mx-auto pb-2 text-5xl font-bold text-white">
           Create <Text className="text-pink-400">T3</Text> Turbo
@@ -105,7 +104,7 @@ const Index = () => {
         <Button
           onPress={() => void utils.post.all.invalidate()}
           title="Refresh posts"
-          color={"#f472b6"}
+          color={'#f472b6'}
         />
 
         <View className="py-2">
@@ -118,7 +117,7 @@ const Index = () => {
           data={postQuery.data}
           estimatedItemSize={20}
           ItemSeparatorComponent={() => <View className="h-2" />}
-          renderItem={(p) => (
+          renderItem={p => (
             <PostCard
               post={p.item}
               onDelete={() => deletePostMutation.mutate(p.item.id)}
