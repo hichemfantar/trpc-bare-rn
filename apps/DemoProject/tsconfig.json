@@ -1,3 +1,38 @@
 {
-  "extends": "@tsconfig/react-native/tsconfig.json"
+  "extends": "@tsconfig/react-native/tsconfig.json",
+  // "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "types": ["node", "webpack-env"],
+
+    "paths": {
+      "@apis": ["./src/apis/index.ts"],
+      "@assets": ["./src/assets/index.ts"],
+      "@components": ["./src/components/index.ts"],
+      "@configs": ["./src/configs/index.ts"],
+      "@constants": ["./src/constants/index.ts"],
+      "@hooks": ["./src/hooks/index.ts"],
+      "@layouts": ["./src/layouts/index.ts"],
+      "@screens": ["./src/screens/index.ts"],
+      "@services": ["./src/services"],
+      "@utils": ["./src/utils/index.ts"],
+      "@skeleton": ["./src/skeleton/index.ts"],
+      "@navigation": ["./src/navigation/index.ts"]
+    }
+  },
+
+  "target": "es2017",
+  "lib": ["dom", "dom.iterable", "esnext"],
+  "allowJs": true,
+  "checkJs": true,
+  "forceConsistentCasingInFileNames": true,
+  "noEmit": true,
+  "esModuleInterop": true,
+  "module": "esnext",
+  "moduleResolution": "node",
+  "resolveJsonModule": true,
+  "isolatedModules": true,
+  "jsx": "preserve",
+  "incremental": true,
+  "noUncheckedIndexedAccess": true,
+  "noImplicitAny": false
 }
